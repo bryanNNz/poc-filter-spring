@@ -34,7 +34,7 @@ public class MobileFilterPolicy implements Filter {
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
+			throws IOException, ServletException {	
 		LOG.info("INIT FILTER");
 
 		if (hasMobileFilterPolicyAnnotation(request)) {// SE TRUE CHAMA O PROCESSAMENTO ESPECIFICO E LIBERA A REQUEST
@@ -54,7 +54,7 @@ public class MobileFilterPolicy implements Filter {
 		try {
 			HttpServletRequest httpServletRequest = (HttpServletRequest) request;
 
-			if (!ServletRequestPathUtils.hasParsedRequestPath(request)) {
+			if (!ServletRequestPathUtils.hasParsedRequestPath(httpServletRequest)) {
 				ServletRequestPathUtils.parseAndCache(httpServletRequest);
 			}
 
